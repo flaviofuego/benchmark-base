@@ -1,6 +1,6 @@
 FROM docker:dind
 
-# Instalar git y bash (docker:dind se basa en Alpine)
+# Instalar git y bash 
 RUN apk update && apk add git bash
 
 WORKDIR /benchmark
