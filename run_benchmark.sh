@@ -1,6 +1,13 @@
 #!/bin/bash
 set -e
 
+# Esperar a que el daemon Docker esté listo
+echo "Esperando a que el daemon Docker esté listo..."
+until docker info > /dev/null 2>&1; do
+    sleep 1
+done
+echo "Docker daemon listo."
+
 # Directorio donde se guardarán los resultados (se mapea desde el host)
 OUTPUT_DIR="/benchmark_output"
 CSV_FILE="${OUTPUT_DIR}/results.csv"
