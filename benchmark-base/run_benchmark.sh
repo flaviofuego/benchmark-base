@@ -27,7 +27,7 @@ if [ ! -d "${LOCAL_REPO_DIR}" ]; then
     git clone ${REPO_URL} ${LOCAL_REPO_DIR}
 else
     echo "El repositorio ya existe. Actualizando..."
-    git -C "$SOLUTIONS_DIR" pull
+    git -C "$LOCAL_REPO_DIR" pull
 fi
 
 echo "Lenguaje,Tiempo(ms)" > ${CSV_FILE}
