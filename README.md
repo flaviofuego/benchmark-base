@@ -46,12 +46,10 @@ javascript,101
 go,112
 ```
 
-## Licencia
+## Benchmarks
 
-Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
-
-Para ejecutar todo el proyecto, usa el siguiente comando en la raíz del proyecto:
+Enlace con el repositorio de benchmarks con los diferentes lenguajes:
 
 ```sh
-docker-compose up --build
+https://github.com/flaviofuego/benchmark-solutions.git
 ```
