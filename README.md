@@ -9,6 +9,11 @@ Este proyecto ejecuta un benchmark de soluciones implementadas en varios lenguaj
 - Docker
 - Docker Compose
 
+## Grupo
+
+1. Cristian David Gonzalez Franco
+2. Flavio Andres Arregoces Mercado
+
 ## Uso
 
 Para ejecutar el benchmark, sigue estos pasos:
