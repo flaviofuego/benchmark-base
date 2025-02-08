@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-# Desactivar DOCKER_HOST para evitar conflictos
 unset DOCKER_HOST
 
 echo "Iniciando Docker daemon..."
@@ -13,11 +12,11 @@ while ! docker info > /dev/null 2>&1; do
 done
 echo "Docker daemon listo."
 
-# Directorio para guardar resultados (montado desde el host)
+# Directorio donde se guardarán los resultados (montado desde el host)
 OUTPUT_DIR="/benchmark_output"
 CSV_FILE="${OUTPUT_DIR}/results.csv"
 
-# URL del repositorio de soluciones (reemplaza con la URL real)
+# URL del repositorio de soluciones (reemplazar por la URL real)
 REPO_URL="https://github.com/flaviofuego/benchmark-solutions.git"
 LOCAL_REPO_DIR="/benchmark/benchmark-solutions"
 
@@ -30,7 +29,6 @@ else
     echo "Repositorio ya clonado."
 fi
 
-# Inicializar el CSV con encabezado
 echo "Lenguaje,Tiempo(ms)" > ${CSV_FILE}
 
 languages=("python" "java" "cpp" "javascript" "go")
@@ -41,20 +39,10 @@ do
     LANG_DIR="${LOCAL_REPO_DIR}/${lang}"
     IMAGE_NAME="solution-${lang}"
     
-    # Construir la imagen de la solución
     docker build -t ${IMAGE_NAME} ${LANG_DIR}
     
-    # Ejecutar el contenedor y capturar el output
     TIME_OUTPUT=$(docker run --rm -v ${OUTPUT_DIR}:/output ${IMAGE_NAME})
     
-    # Depurar: imprimir el output capturado
-    echo "Output for ${lang}: '${TIME_OUTPUT}'"
-    
-    if [ -z "$TIME_OUTPUT" ]; then
-        echo "Advertencia: No se recibió tiempo de ejecución para ${lang}"
-    fi
-    
-    # Registrar en el CSV
     echo "${lang},${TIME_OUTPUT}" >> ${CSV_FILE}
     echo "Resultado ${lang}: ${TIME_OUTPUT} ms"
 done
