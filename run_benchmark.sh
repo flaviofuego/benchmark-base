@@ -6,7 +6,7 @@ OUTPUT_DIR="/benchmark_output"
 CSV_FILE="${OUTPUT_DIR}/results.csv"
 
 # URL del repositorio de soluciones (reemplaza con la URL real)
-REPO_URL="https://github.com/yourusername/benchmark-solutions.git"
+REPO_URL="https://github.com/flaviofuego/benchmark-solutions.git"
 LOCAL_REPO_DIR="/benchmark/benchmark-solutions"
 
 # Crear el directorio de salida
